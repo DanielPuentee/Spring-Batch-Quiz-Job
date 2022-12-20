@@ -4,7 +4,7 @@ USE quiz01;
 
 CREATE TABLE jpa_batch (
 
-id int NOT NULL,
+id varchar(1600) NOT NULL,
 
 pregunta varchar(1600) NOT NULL,
 
