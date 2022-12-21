@@ -1,9 +1,15 @@
 package com.quiz.model;
 
+import java.io.Serializable;
 
-public class PreguntasDAO {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-    public int id;
+@Entity
+public class PreguntasDAO implements Serializable {
+
+    @Id
+    public String id;
     public String pregunta;
     public String todas_respuestas;
     public String respuesta;
@@ -13,7 +19,7 @@ public class PreguntasDAO {
         super();
     }
 
-    public PreguntasDAO(int id, String pregunta, String todas_respuestas, String respuesta, String respuesta_letra) {
+    public PreguntasDAO(String id, String pregunta, String todas_respuestas, String respuesta, String respuesta_letra) {
         super();
         this.id = id;
         this.pregunta = pregunta;
@@ -21,6 +27,14 @@ public class PreguntasDAO {
         this.respuesta = respuesta;
         this.respuesta_letra = respuesta_letra;
     }
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getPregunta() {
         return pregunta;
     }
@@ -29,14 +43,13 @@ public class PreguntasDAO {
         this.pregunta = pregunta;
     }
 
-    public String getTodasLasRespuestas() {
+    public String getTodas_respuestas() {
         return todas_respuestas;
     }
 
-    public void setTodasLasRespuestas(String todas_respuestas) {
+    public void setTodas_respuestas(String todas_respuestas) {
         this.todas_respuestas = todas_respuestas;
     }
-
     public String getRespuesta() {
         return respuesta;
     }
@@ -45,11 +58,11 @@ public class PreguntasDAO {
         this.respuesta = respuesta;
     }
 
-    public String getRespuestaLetras() {
+    public String getRespuesta_letra() {
         return respuesta_letra;
     }
 
-    public void setRespuestaLetras(String respuesta_letra) {
+    public void setRespuesta_letra(String respuesta_letra) {
         this.respuesta_letra = respuesta_letra;
     }
     
