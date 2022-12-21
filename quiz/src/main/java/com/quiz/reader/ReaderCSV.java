@@ -1,4 +1,4 @@
-package com.quiz.config;
+package com.quiz.reader;
 
 import com.quiz.model.PreguntasDAO;
 
@@ -10,7 +10,7 @@ import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 
 public class ReaderCSV {
-
+    
     public static FlatFileItemReader<PreguntasDAO> reader() {
 
         FlatFileItemReader<PreguntasDAO> reader = new FlatFileItemReader<PreguntasDAO>();

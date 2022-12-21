@@ -1,6 +1,6 @@
-package com.quiz.config;
+package com.quiz.writer;
 import com.quiz.model.PreguntasDAO;
-
+import com.quiz.repo.PreguntasDAORespository;
 
 import javax.sql.DataSource;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
@@ -10,12 +10,16 @@ import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourc
 public class WriterDB extends JdbcBatchItemWriter<PreguntasDAO> {
 
     @Autowired
+    public PreguntasDAORespository preguntasDAORespository;
+
+    @Autowired
     public DataSource dataSource;
+
 
     public static JdbcBatchItemWriter<PreguntasDAO> writer(DataSource dataSource){
         JdbcBatchItemWriter<PreguntasDAO> writer = new JdbcBatchItemWriter<PreguntasDAO>();
         writer.setDataSource(dataSource);
-        writer.setSql("INSERT INTO jpa_batch (id, pregunta, todas_respuestas, respuesta, respuesta_letra) VALUES (:id, :pregunta, :todas_respuestas, :respuesta, :respuesta_letra)");
+        writer.setSql(PreguntasDAORespository.QUERY_INSERT);
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<PreguntasDAO>());
         return writer;
 

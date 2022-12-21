@@ -1,8 +1,14 @@
 package com.quiz.model;
 
+import java.io.Serializable;
 
-public class PreguntasDAO {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class PreguntasDAO implements Serializable {
+
+    @Id
     public String id;
     public String pregunta;
     public String todas_respuestas;
