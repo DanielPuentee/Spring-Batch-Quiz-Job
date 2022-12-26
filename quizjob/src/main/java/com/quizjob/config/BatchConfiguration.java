@@ -1,9 +1,4 @@
-package com.quiz.config;
-
-import com.quiz.model.PreguntasDAO;
-import com.quiz.reader.ReaderCSV;
-import com.quiz.repo.PreguntasDAORespository;
-import com.quiz.writer.WriterDB;
+package com.quizjob.config;
 
 import javax.sql.DataSource;
 
@@ -17,12 +12,17 @@ import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 
+import com.quizjob.model.PreguntasDAO;
+import com.quizjob.reader.ReaderCSV;
+import com.quizjob.repo.PreguntasDAORespository;
+import com.quizjob.writer.WriterDB;
+
 @Configuration
 @EnableBatchProcessing
 public class BatchConfiguration {
 
     public static String JOB_NAME = "job";
-    public static String STEP_NAME = "step2.7";
+    public static String STEP_NAME = "step2.10";
 
     @Autowired
     public PreguntasDAORespository preguntasDAORespository;
