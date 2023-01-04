@@ -1,10 +1,11 @@
-package com.quiz.reader;
-
-import com.quiz.model.PreguntasDAO;
+package com.quizjob.reader;
 
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
 import org.springframework.core.io.ClassPathResource;
+
+import com.quizjob.model.PreguntasDAO;
+
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;

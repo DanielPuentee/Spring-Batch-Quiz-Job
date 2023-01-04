@@ -1,10 +1,11 @@
-package com.quiz.writer;
-import com.quiz.model.PreguntasDAO;
-import com.quiz.repo.PreguntasDAORespository;
-
+package com.quizjob.writer;
 import javax.sql.DataSource;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.quizjob.model.PreguntasDAO;
+import com.quizjob.repo.PreguntasDAORespository;
+
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 
 public class WriterDB extends JdbcBatchItemWriter<PreguntasDAO> {

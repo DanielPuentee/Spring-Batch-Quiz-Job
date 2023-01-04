@@ -1,4 +1,4 @@
-package com.quiz.model;
+package com.quizjob.model;
 
 import java.io.Serializable;
 
