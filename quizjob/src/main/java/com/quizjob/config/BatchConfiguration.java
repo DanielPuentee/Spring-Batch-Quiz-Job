@@ -45,19 +45,22 @@ public class BatchConfiguration {
 
     // IMPORT WRITER
     @Bean
-    public JdbcBatchItemWriter<PreguntasDAO> writer(DataSource dataSource){
-        return WriterDB.writer(dataSource);
+    public JdbcBatchItemWriter<PreguntasDAO> writer() throws Exception {
+        return WriterDB.writer();
     }
     
-
+    /* @Bean
+    public JdbcBatchItemWriter<PreguntasDAO> writer(DataSource dataSource){
+        return WriterDB.writer(dataSource);
+    } */
 
     // DEFINING STEP
     @Bean
-    public Step step() {
+    public Step step() throws Exception {
         return stepBuilderFactory.get(STEP_NAME)
                 .<PreguntasDAO, PreguntasDAO>chunk(10)
                 .reader(reader())
-                .writer(writer(dataSource))
+                .writer(writer())
                 .build();
     }
 
