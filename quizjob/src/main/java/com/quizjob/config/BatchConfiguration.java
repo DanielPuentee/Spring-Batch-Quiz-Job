@@ -24,8 +24,6 @@ public class BatchConfiguration {
     public static String JOB_NAME = "job";
     public static String STEP_NAME = "step2.10";
 
-    @Autowired
-    public PreguntasDAORespository preguntasDAORespository;
 
     @Autowired
     public JobBuilderFactory jobBuilderFactory;
@@ -33,8 +31,6 @@ public class BatchConfiguration {
     @Autowired
     public StepBuilderFactory stepBuilderFactory;
 
-    @Autowired
-    public DataSource dataSource;
 
 
     // IMPORT READER
@@ -45,19 +41,22 @@ public class BatchConfiguration {
 
     // IMPORT WRITER
     @Bean
-    public JdbcBatchItemWriter<PreguntasDAO> writer(DataSource dataSource){
-        return WriterDB.writer(dataSource);
+    public JdbcBatchItemWriter<PreguntasDAO> writer() throws Exception {
+        return WriterDB.writer();
     }
     
-
+    /* @Bean
+    public JdbcBatchItemWriter<PreguntasDAO> writer(DataSource dataSource){
+        return WriterDB.writer(dataSource);
+    } */
 
     // DEFINING STEP
     @Bean
-    public Step step() {
+    public Step step() throws Exception {
         return stepBuilderFactory.get(STEP_NAME)
                 .<PreguntasDAO, PreguntasDAO>chunk(10)
                 .reader(reader())
-                .writer(writer(dataSource))
+                .writer(writer())
                 .build();
     }
 
