@@ -50,7 +50,7 @@ public class WriterDB extends JdbcBatchItemWriter<PreguntasDAO> {
         client.execute(httpPost);
     }
 
-    public static JdbcBatchItemWriter<PreguntasDAO> writer() throws Exception{
+    public static JdbcBatchItemWriter<PreguntasDAO> writer() throws Exception {
         JdbcBatchItemWriter<PreguntasDAO> writer = new JdbcBatchItemWriter<PreguntasDAO>();
         postMethod();
         return writer;

@@ -24,8 +24,6 @@ public class BatchConfiguration {
     public static String JOB_NAME = "job";
     public static String STEP_NAME = "step2.10";
 
-    @Autowired
-    public PreguntasDAORespository preguntasDAORespository;
 
     @Autowired
     public JobBuilderFactory jobBuilderFactory;
@@ -33,8 +31,6 @@ public class BatchConfiguration {
     @Autowired
     public StepBuilderFactory stepBuilderFactory;
 
-    @Autowired
-    public DataSource dataSource;
 
 
     // IMPORT READER
