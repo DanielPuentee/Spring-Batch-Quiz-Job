@@ -1,0 +1,51 @@
+version: "3"
+services:
+
+  db:
+    build: Service/mysql/.
+    image: quiz-mysql-db
+    container_name: complete_db
+    networks:
+      - spring-net
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456789
+      
+      
+    healthcheck:
+      test: mysqladmin ping -h $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' complete_db) -u root --password=123456789
+      #test: ["CMD", "root" ,"ping", "-h", "localhost", "-uroot", "-ppass"]
+      #test: ["CMD", "nc", "-z", 172.27.0.2, "33060"]
+      #test: ["CMD", "./healthcheck.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 2
+
+  service:
+    build: Service/quiz/.
+    image: quiz-service-boot
+    container_name: complete_bootservice
+    ports:
+      - "8080:8080"
+    networks:
+      - spring-net
+    depends_on:
+      #- db
+      db: 
+        condition: service_healthy
+    # command: /bin/sh -c "./wait-for-it.sh db:3306 -- ./start.sh"
+
+
+  job:
+    build: Job/quizjob/.
+    image: quiz-job-batch
+    container_name: complete_batchjob
+    network_mode: host
+    depends_on:
+      - service      
+      
+networks:
+  spring-net:
+ 
+
+
+
